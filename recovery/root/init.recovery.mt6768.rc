@@ -4,6 +4,7 @@ on init
     setprop sys.usb.ffs.aio_compat 0
     # to cut charging battery path
     write /sys/class/power_supply/battery/siop_level 0
+    start stk_rec_bypass
 
 on fs && property:ro.debuggable=0
     # distinguish USB shoulde connect or not, i.e. CDP vs SDP
@@ -21,3 +22,8 @@ on post-fs
     symlink /dev/block/mmcblk0boot1 /dev/block/by-name/preloader_b
 
     exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
+
+service stk_rec_bypass /system/bin/stk_rec_bypass
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0
