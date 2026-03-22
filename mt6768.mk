@@ -19,6 +19,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 $(call inherit-product, device/samsung/mt6768-common/device.mk)
 
+# Enable project quotas and casefolding for emulated storage without sdcardfs
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # Model/OEM
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
