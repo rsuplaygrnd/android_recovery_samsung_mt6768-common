@@ -24,11 +24,6 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-
-# Enable OTG after boot completed
-on property:sys.boot_completed=1
-    write /sys/class/usb_notify/usb_control/usb_data_enabled 1
-
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
 
